@@ -1,0 +1,13 @@
+﻿  application.cpp
+C:\Facultate\MG\ModelareGrafica\RepoMG\RepoMG\application.cpp(26,31): warning C4390: ';': empty controlled statement found; is this the intent?
+application.obj : error LNK2019: unresolved external symbol glewInit referenced in function main
+application.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
+application.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
+application.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
+application.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
+application.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
+application.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
+application.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
+C:\Facultate\MG\ModelareGrafica\RepoMG\Dependencies\GLEW\lib\Release\Win32\glew32s.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Facultate\MG\ModelareGrafica\RepoMG\Dependencies\GLFW\lib-vc2019\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Facultate\MG\ModelareGrafica\RepoMG\x64\Debug\RepoMG.exe : fatal error LNK1120: 8 unresolved externals
