@@ -1,3 +1,2 @@
-﻿  application.cpp
-C:\Facultate\MG\ModelareGrafica\RepoMG\RepoMG\application.cpp(26,31): warning C4390: ';': empty controlled statement found; is this the intent?
-  RepoMG.vcxproj -> C:\Facultate\MG\ModelareGrafica\RepoMG\Debug\RepoMG.exe
+﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  RepoMG.vcxproj -> D:\Faculta\MG\TREN\RepoMG\Debug\RepoMG.exe
