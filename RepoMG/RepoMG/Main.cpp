@@ -77,7 +77,8 @@ int main()
 	// -------------------------
 	//Shader shader("default.vs", "default.fs");
 	Shader skyboxShader("skybox.vs", "skybox.fs");
-	Shader modelShader("model.vs", "model.fs");
+	Shader trainShader("model.vs", "model.fs");
+	Shader terrainShader("model.vs", "model.fs");
 
 	//std::cout << localPath;
 
@@ -172,17 +173,6 @@ int main()
 		 1.0f, -1.0f,  1.0f
 	};
 
-	// cube VAO
-	/*unsigned int cubeVAO, cubeVBO;
-	glGenVertexArrays(1, &cubeVAO);
-	glGenBuffers(1, &cubeVBO);
-	glBindVertexArray(cubeVAO);
-	glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), &cubeVertices, GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));*/
 	// skybox VAO
 	unsigned int skyboxVAO, skyboxVBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -197,12 +187,10 @@ int main()
 	// -------------
 	fs::path localPath = fs::current_path();
 	std::string textureFolder = localPath.string() + "/Resources/Textures";
-	//std::string cubeTexturePath = textureFolder + "/train.jpg";
-
-	//unsigned int cubeTexture = loadTexture(cubeTexturePath.c_str());
 
 	Model tom(localPath.string() + "/Resources/train/asd/0Q1GQ99342K5Y2OJFEP68SLNO.obj");
-	Model ourModel(localPath.string() + "/Resources/train/trendoi/emd-gp40-2/train.obj");
+	Model driverWagon(localPath.string() + "/Resources/train/trendoi/emd-gp40-2/train.obj");
+	Model terrain(localPath.string() + "/Resources/terrain/terrain.obj");
 
 	std::vector<std::string> faces
 	{
@@ -230,6 +218,11 @@ int main()
 	skyboxShader.use();
 	skyboxShader.setInt("skybox", 0);
 
+	float moveX = -10.0f;
+	float moveY = 0.0f;
+	float moveZ = 0.0f;
+	float degrees = 0.0f;
+
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
@@ -251,39 +244,31 @@ int main()
 
 		// draw scene as normal
 		//shader.use();
-		modelShader.use();
+		trainShader.use();
+		terrainShader.use();
 
-		//glm::mat4 model = glm::mat4(1.0f);
-		//glm::mat4 view = camera.GetViewMatrix();
-		//glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		//
-
-		////shader.setMat4("model", model);
-		////shader.setMat4("view", view);
-		////shader.setMat4("projection", projection);
-
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-		//model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
-
-		//modelShader.setMat4("projection", projection);
-		//modelShader.setMat4("view", view);
-		//modelShader.setMat4("model", model);
-
-		//ourModel.Draw(modelShader);
-
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
 		glm::mat4 view = camera.GetViewMatrix();
-		modelShader.setMat4("projection", projection);
-		modelShader.setMat4("view", view);
+		trainShader.setMat4("projection", projection);
+		trainShader.setMat4("view", view);
+		terrainShader.setMat4("projection", projection);
+		terrainShader.setMat4("view", view);
 
 		// render the loaded model
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-		//model = glm::scale(model, glm::vec3(0.03f, 0.03f, 0.03f));	// if it's a bit too big for our scene, scale it down
-		model = glm::scale(model, glm::vec3(1.3f, 1.3f, 1.3f));
-		modelShader.setMat4("model", model);
-		ourModel.Draw(modelShader);
-		tom.Draw(modelShader);
+		model = glm::scale(model, glm::vec3(1.3f, 1.3f, 1.3f));	// if it's a bit too big for our scene, scale it down
+		model = glm::rotate(model, glm::radians(degrees), glm::vec3(0, 1, 0));
+		trainShader.setMat4("model", model);
+		driverWagon.Draw(trainShader);
+		//tom.Draw(trainShader);
+
+		glm::mat4 model2 = glm::mat4(1.0f);
+		model2 = glm::translate(model2, glm::vec3(350.0f, -22.0f, -400.0f)); // translate it down so it's at the center of the scene
+		model2 = glm::scale(model2, glm::vec3(1400.0f, 1400.0f, 1400.0f));
+		terrainShader.setMat4("model", model2);
+		terrain.Draw(terrainShader);
+		
 
 		// cubes
 		/*glBindVertexArray(cubeVAO);
@@ -293,6 +278,7 @@ int main()
 		glBindVertexArray(0);*/
 
 		// draw skybox as last
+		glDepthMask(GL_FALSE);
 		glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
 		skyboxShader.use();
 		view = glm::mat4(glm::mat3(camera.GetViewMatrix())); // remove translation from the view matrix
@@ -305,11 +291,16 @@ int main()
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		glBindVertexArray(0);
 		glDepthFunc(GL_LESS); // set depth function back to default
+		glDepthMask(GL_TRUE);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
+		moveX += 0.1f;
+		moveY += 0.005f;
+		degrees += 0.5f;
 	}
 
 	// optional: de-allocate all resources once they've outlived their purpose:
