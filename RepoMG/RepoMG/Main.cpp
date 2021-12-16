@@ -1,15 +1,14 @@
-//------- Ignore this ----------
 #include <filesystem>
 #include <vector>
 
 #include "Camera.h"
 #include "Shader.h"
+#include "Model.h"
+
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
+
 namespace fs = std::filesystem;
-//------------------------------
-
-
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -76,58 +75,58 @@ int main()
 
 	// build and compile shaders
 	// -------------------------
-	Shader shader("default.vs", "default.fs");
+	//Shader shader("default.vs", "default.fs");
 	Shader skyboxShader("skybox.vs", "skybox.fs");
-
+	Shader modelShader("model.vs", "model.fs");
 
 	//std::cout << localPath;
 
 	// set up vertex data (and buffer(s)) and configure vertex attributes
 	// ------------------------------------------------------------------
-	float cubeVertices[] = {
-		// positions          // texture Coords
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	//float cubeVertices[] = {
+	//	// positions          // texture Coords
+	//	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	//	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+	//	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	//	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	//	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	//	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	//	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	//	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	//	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	//	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	//	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+	//	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
 
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	//	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	//	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	//	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	//	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+	//	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	//	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	//	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	//	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
 
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-	};
+	//	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	//	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	//	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+	//	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	//};
 	float skyboxVertices[] = {
 		// positions          
 		-1.0f,  1.0f, -1.0f,
@@ -174,7 +173,7 @@ int main()
 	};
 
 	// cube VAO
-	unsigned int cubeVAO, cubeVBO;
+	/*unsigned int cubeVAO, cubeVBO;
 	glGenVertexArrays(1, &cubeVAO);
 	glGenBuffers(1, &cubeVBO);
 	glBindVertexArray(cubeVAO);
@@ -183,7 +182,7 @@ int main()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));*/
 	// skybox VAO
 	unsigned int skyboxVAO, skyboxVBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -198,10 +197,12 @@ int main()
 	// -------------
 	fs::path localPath = fs::current_path();
 	std::string textureFolder = localPath.string() + "/Resources/Textures";
-	std::string cubeTexturePath = textureFolder + "/train.jpg";
+	//std::string cubeTexturePath = textureFolder + "/train.jpg";
 
-	unsigned int cubeTexture = loadTexture(cubeTexturePath.c_str());
+	//unsigned int cubeTexture = loadTexture(cubeTexturePath.c_str());
 
+	Model tom(localPath.string() + "/Resources/train/asd/0Q1GQ99342K5Y2OJFEP68SLNO.obj");
+	Model ourModel(localPath.string() + "/Resources/train/trendoi/emd-gp40-2/train.obj");
 
 	std::vector<std::string> faces
 	{
@@ -223,8 +224,8 @@ int main()
 
 	// shader configuration
 	// --------------------
-	shader.use();
-	shader.setInt("texture1", 0);
+	//shader.use();
+	//shader.setInt("texture1", 0);
 
 	skyboxShader.use();
 	skyboxShader.setInt("skybox", 0);
@@ -249,19 +250,47 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// draw scene as normal
-		shader.use();
-		glm::mat4 model = glm::mat4(1.0f);
-		glm::mat4 view = camera.GetViewMatrix();
+		//shader.use();
+		modelShader.use();
+
+		//glm::mat4 model = glm::mat4(1.0f);
+		//glm::mat4 view = camera.GetViewMatrix();
+		//glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+		//
+
+		////shader.setMat4("model", model);
+		////shader.setMat4("view", view);
+		////shader.setMat4("projection", projection);
+
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+		//model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+
+		//modelShader.setMat4("projection", projection);
+		//modelShader.setMat4("view", view);
+		//modelShader.setMat4("model", model);
+
+		//ourModel.Draw(modelShader);
+
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		shader.setMat4("model", model);
-		shader.setMat4("view", view);
-		shader.setMat4("projection", projection);
+		glm::mat4 view = camera.GetViewMatrix();
+		modelShader.setMat4("projection", projection);
+		modelShader.setMat4("view", view);
+
+		// render the loaded model
+		glm::mat4 model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+		//model = glm::scale(model, glm::vec3(0.03f, 0.03f, 0.03f));	// if it's a bit too big for our scene, scale it down
+		model = glm::scale(model, glm::vec3(1.3f, 1.3f, 1.3f));
+		modelShader.setMat4("model", model);
+		ourModel.Draw(modelShader);
+		tom.Draw(modelShader);
+
 		// cubes
-		glBindVertexArray(cubeVAO);
+		/*glBindVertexArray(cubeVAO);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, cubeTexture);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-		glBindVertexArray(0);
+		glBindVertexArray(0);*/
 
 		// draw skybox as last
 		glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
@@ -285,9 +314,9 @@ int main()
 
 	// optional: de-allocate all resources once they've outlived their purpose:
 	// ------------------------------------------------------------------------
-	glDeleteVertexArrays(1, &cubeVAO);
+	//glDeleteVertexArrays(1, &cubeVAO);
 	glDeleteVertexArrays(1, &skyboxVAO);
-	glDeleteBuffers(1, &cubeVBO);
+	//glDeleteBuffers(1, &cubeVBO);
 	glDeleteBuffers(1, &skyboxVBO);
 
 	glfwTerminate();

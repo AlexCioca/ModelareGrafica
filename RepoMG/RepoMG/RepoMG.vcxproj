@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\RepoMG\Resources\Include\freeglut\include\GL\;..\RepoMG\Resources\Include\glad\include\;..\RepoMG\Resources\Include\glm\glm\;..\RepoMG\Resources\Include\glfw-3.3.4.bin.WIN32\include\GLFW\;..\RepoMG\Resources\Include\glew-2.2.0\include\GL\;..\RepoMG\Resources\Include\stb-master\stb-master\;$(IncludePath)</IncludePath>
-    <LibraryPath>..\RepoMG\Resources\Include\freeglut\lib\;..\RepoMG\Resources\Include\glew-2.2.0\lib\Release\Win32\;..\RepoMG\Resources\Include\glfw-3.3.4.bin.WIN32\lib-vc2019\;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\RepoMG\Resources\Include\freeglut\include\GL\;..\RepoMG\Resources\Include\glad\include\;..\RepoMG\Resources\Include\glm\glm\;..\RepoMG\Resources\Include\glfw-3.3.4.bin.WIN32\include\GLFW\;..\RepoMG\Resources\Include\glew-2.2.0\include\GL\;..\RepoMG\Resources\Include\stb-master\stb-master\;..\RepoMG\Resources\Include\assimp-5.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\RepoMG\Resources\Include\freeglut\lib\;..\RepoMG\Resources\Include\glew-2.2.0\lib\Release\Win32\;..\RepoMG\Resources\Include\glfw-3.3.4.bin.WIN32\lib-vc2019\;..\RepoMG\Resources\Include\assimp-5.0.1\lib;$(SolutionDir)RepoMG\Resources\Include\assimp-5.0.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -90,14 +90,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)RepoMG\Resources\Include\assimp\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLEW\lib\Release\Win32;$(SolutionDir)Dependencies\GLFW\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)RepoMG\Resources\Include\assimp\lib;$(SolutionDir)Dependencies\GLEW\lib\Release\Win32;$(SolutionDir)Dependencies\GLFW\lib-vc2019;$(SolutionDir)RepoMG\Resources\Include\assimp-5.0.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,14 +124,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLEW_STATIC;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;ASSIMP_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32s.lib;User32.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;User32.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp.lib;lib/assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLFW\lib-vc2019;$(SolutionDir)Dependencies\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -157,16 +157,22 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Resources\Include\glad\src\glad.c" />
     <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="default.fs" />
     <None Include="default.vs" />
+    <None Include="model.fs" />
+    <None Include="model.vs" />
     <None Include="skybox.fs" />
     <None Include="skybox.vs" />
   </ItemGroup>

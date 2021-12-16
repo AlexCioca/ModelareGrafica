@@ -1,2 +1,10 @@
-﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿  Main.cpp
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(239,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(362,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(363,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(367,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(368,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(370,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(371,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(380,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   RepoMG.vcxproj -> D:\Faculta\MG\TREN\RepoMG\Debug\RepoMG.exe
