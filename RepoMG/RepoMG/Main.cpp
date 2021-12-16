@@ -257,15 +257,15 @@ int main()
 		// render the loaded model
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(1.3f, 1.3f, 1.3f));	// if it's a bit too big for our scene, scale it down
+		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));	// if it's a bit too big for our scene, scale it down
 		model = glm::rotate(model, glm::radians(degrees), glm::vec3(0, 1, 0));
 		trainShader.setMat4("model", model);
 		driverWagon.Draw(trainShader);
 		//tom.Draw(trainShader);
 
 		glm::mat4 model2 = glm::mat4(1.0f);
-		model2 = glm::translate(model2, glm::vec3(350.0f, -22.0f, -400.0f)); // translate it down so it's at the center of the scene
-		model2 = glm::scale(model2, glm::vec3(1400.0f, 1400.0f, 1400.0f));
+		model2 = glm::translate(model2, glm::vec3(650.0f, -38.0f, -750.0f)); // translate it down so it's at the center of the scene
+		model2 = glm::scale(model2, glm::vec3(2000.0f, 2000.0f, 2000.0f));
 		terrainShader.setMat4("model", model2);
 		terrain.Draw(terrainShader);
 		
