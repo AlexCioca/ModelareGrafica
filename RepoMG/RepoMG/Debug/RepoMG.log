@@ -1,10 +1,10 @@
 ﻿  Main.cpp
-D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(232,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(353,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(354,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(358,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(359,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(361,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(362,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(371,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(196,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(367,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(368,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(372,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(373,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(375,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(376,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(385,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   RepoMG.vcxproj -> D:\Faculta\MG\TREN\RepoMG\Debug\RepoMG.exe

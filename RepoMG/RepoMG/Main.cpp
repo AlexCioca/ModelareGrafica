@@ -22,6 +22,7 @@ const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
 
 // camera
+
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = (float)SCR_WIDTH / 2.0;
 float lastY = (float)SCR_HEIGHT / 2.0;
@@ -72,62 +73,7 @@ int main()
 	// configure global opengl state
 	// -----------------------------
 	glEnable(GL_DEPTH_TEST);
-
-	// build and compile shaders
-	// -------------------------
-	//Shader shader("default.vs", "default.fs");
-	Shader skyboxShader("skybox.vs", "skybox.fs");
-	Shader trainShader("model.vs", "model.fs");
-	Shader terrainShader("model.vs", "model.fs");
-
-	//std::cout << localPath;
-
-	// set up vertex data (and buffer(s)) and configure vertex attributes
-	// ------------------------------------------------------------------
-	//float cubeVertices[] = {
-	//	// positions          // texture Coords
-	//	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-	//	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-	//	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	//	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	//	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	//	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-
-	//	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	//	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	//	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	//	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	//	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-	//	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-
-	//	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	//	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	//	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	//	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	//	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	//	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-	//	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	//	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	//	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	//	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	//	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	//	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-	//	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	//	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-	//	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	//	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	//	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	//	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-	//	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	//	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	//	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	//	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	//	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-	//	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-	//};
+	
 	float skyboxVertices[] = {
 		// positions          
 		-1.0f,  1.0f, -1.0f,
@@ -173,6 +119,17 @@ int main()
 		 1.0f, -1.0f,  1.0f
 	};
 
+	// build and compile shaders
+	// -------------------------
+	//Shader shader("default.vs", "default.fs");
+	Shader skyboxShader("skybox.vs", "skybox.fs");
+	Shader trainShader("model.vs", "model.fs");
+	Shader terrainShader("model.vs", "model.fs");
+	Shader stationShader("model.vs", "model.fs");
+	Shader ndStationShader("model.vs", "model.fs");
+	Shader bvSignShader("model.vs", "model.fs");
+	Shader bucSignShader("model.vs", "model.fs");
+
 	// skybox VAO
 	unsigned int skyboxVAO, skyboxVBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -189,8 +146,12 @@ int main()
 	std::string textureFolder = localPath.string() + "/Resources/Textures";
 
 	Model tom(localPath.string() + "/Resources/train/asd/0Q1GQ99342K5Y2OJFEP68SLNO.obj");
-	Model driverWagon(localPath.string() + "/Resources/train/trendoi/emd-gp40-2/train.obj");
+	Model driverWagon(localPath.string() + "/Resources/train/tren/emd-gp40-2/train.obj");
 	Model terrain(localPath.string() + "/Resources/terrain/terrain.obj");
+	Model station(localPath.string() + "/Resources/station/milwaukeeroaddepot.obj");
+	Model secondStation(localPath.string() + "/Resources/station/milwaukeeroaddepot.obj");
+	Model bvSign(localPath.string() + "/Resources/station/bvSign/ExitSign_HiPoly.obj");
+	Model bucSign(localPath.string() + "/Resources/station/bucSign/ExitSign_HiPoly.obj");
 
 	std::vector<std::string> faces
 	{
@@ -222,11 +183,14 @@ int main()
 	float moveY = 0.0f;
 	float moveZ = 0.0f;
 	float degrees = 0.0f;
+	unsigned int key = 0;
 
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
 	{
+		
+
 		// per-frame time logic
 		// --------------------
 		float currentFrame = glfwGetTime();
@@ -243,43 +207,94 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// draw scene as normal
-		//shader.use();
+		stationShader.use();
 		trainShader.use();
 		terrainShader.use();
 
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
+		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 3000.0f);
 		glm::mat4 view = camera.GetViewMatrix();
 		trainShader.setMat4("projection", projection);
 		trainShader.setMat4("view", view);
 		terrainShader.setMat4("projection", projection);
 		terrainShader.setMat4("view", view);
+		stationShader.setMat4("projection", projection);
+		stationShader.setMat4("view", view);
 
 		// render the loaded model
-		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));	// if it's a bit too big for our scene, scale it down
-		model = glm::rotate(model, glm::radians(degrees), glm::vec3(0, 1, 0));
-		trainShader.setMat4("model", model);
+		glm::mat4 train = glm::mat4(1.0f);
+		glm::mat4 _terrain = glm::mat4(1.0f);
+		glm::mat4 _station = glm::mat4(1.0f);
+		glm::mat4 _ndStation = glm::mat4(1.0f);
+		glm::mat4 _bvSign = glm::mat4(1.0f);
+		glm::mat4 _bucSign = glm::mat4(1.0f);
+
+		train = glm::translate(train, glm::vec3(3.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+		train = glm::scale(train, glm::vec3(4.0f, 4.0f, 4.0f));	// if it's a bit too big for our scene, scale it down
+		//train = glm::rotate(train, glm::radians(degrees), glm::vec3(0, 1, 0));
+		trainShader.setMat4("model", train);
 		driverWagon.Draw(trainShader);
 		//tom.Draw(trainShader);
-
-		glm::mat4 model2 = glm::mat4(1.0f);
-		model2 = glm::translate(model2, glm::vec3(650.0f, -38.0f, -750.0f)); // translate it down so it's at the center of the scene
-		model2 = glm::scale(model2, glm::vec3(2000.0f, 2000.0f, 2000.0f));
-		terrainShader.setMat4("model", model2);
-		terrain.Draw(terrainShader);
 		
+		_terrain = glm::translate(_terrain, glm::vec3(650.0f, -38.0f, -750.0f));
+		_terrain = glm::scale(_terrain, glm::vec3(2500.0f, 2500.0f, 2500.0f));
+		terrainShader.setMat4("model", _terrain);
+		terrain.Draw(terrainShader);
 
-		// cubes
-		/*glBindVertexArray(cubeVAO);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, cubeTexture);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-		glBindVertexArray(0);*/
+		_station = glm::translate(_station, glm::vec3(-310.0f, -17.0f, 180.0f));
+		_station = glm::scale(_station, glm::vec3(0.03f, 0.03f, 0.03f));
+		_station = glm::rotate(_station, glm::radians(90.0f), glm::vec3(0, 1, 0));
+		stationShader.setMat4("model", _station);
+		station.Draw(stationShader);
+
+		_ndStation = glm::translate(_ndStation, glm::vec3(-90.0f, 22.0f, -1860.0f));
+		_ndStation = glm::scale(_ndStation, glm::vec3(0.03f, 0.03f, 0.03f));
+		_ndStation = glm::rotate(_ndStation, glm::radians(10.0f), glm::vec3(0, 1, 0));
+		ndStationShader.setMat4("model", _ndStation);
+		secondStation.Draw(ndStationShader);
+
+		_bvSign = glm::translate(_bvSign, glm::vec3(-281.0f, 55.0f, 180.0f));
+		_bvSign = glm::scale(_bvSign, glm::vec3(7.0f, 7.0f, 7.0f));
+		_bvSign = glm::rotate(_bvSign, glm::radians(90.0f), glm::vec3(0, 1, 0));
+		bvSignShader.setMat4("model", _bvSign);
+		bvSign.Draw(bvSignShader);
+
+		_bucSign = glm::translate(_bucSign, glm::vec3(-85.0f, 93.5f, -1831.0f));
+		//_bucSign = glm::translate(_bucSign, glm::vec3(-300.0f, 40.0f, 180.0f));
+		_bucSign = glm::scale(_bucSign, glm::vec3(7.0f, 7.0f, 7.0f));
+		_bucSign = glm::rotate(_bucSign, glm::radians(10.0f), glm::vec3(0, 1, 0));
+		bucSignShader.setMat4("model", _bucSign);
+		bucSign.Draw(bucSignShader);
+
+		
+		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) // driver camera
+			key = 1;
+		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) // passanger camera
+			key = 2;
+		if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) // 3rd person camera
+			key = 3;
+		if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS) // free camera
+			key = 4;
+
+		switch (key)
+		{
+		case 1:
+			camera.setViewMatrix(glm::vec3(/*moveX +*/ 21.6f, 14.2f, 4.5f));
+			break;
+		case 2:
+			//
+			break;
+		case 3:
+			//
+			break;
+		case 4:
+			//
+			break;
+		default:
+			break;
+		}
 
 		// draw skybox as last
-		glDepthMask(GL_FALSE);
-		glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
+	    glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
 		skyboxShader.use();
 		view = glm::mat4(glm::mat3(camera.GetViewMatrix())); // remove translation from the view matrix
 		skyboxShader.setMat4("view", view);
@@ -291,16 +306,15 @@ int main()
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		glBindVertexArray(0);
 		glDepthFunc(GL_LESS); // set depth function back to default
-		glDepthMask(GL_TRUE);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
-		moveX += 0.1f;
-		moveY += 0.005f;
-		degrees += 0.5f;
+		//moveX += 0.1f;
+		//moveY += 0.005f;
+		//degrees += 0.5f;
 	}
 
 	// optional: de-allocate all resources once they've outlived their purpose:
