@@ -1,6 +1,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#define GLM_ENABLE_EXPERIMENTAL
+
 #include <stdlib.h> // necesare pentru citirea shader-elor
 #include <stdio.h>
 #include <math.h> 
@@ -9,9 +11,12 @@
 #include <glfw3.h>
 //#include <GL/glew.h>
 
+
 #include <GLM.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
+#include <ext.hpp>
+
 
 #include <iostream>
 #include <fstream>
@@ -89,7 +94,10 @@ public:
         updateCameraVectors();
     }
 
+    void printPosition();
+
 private:
     void updateCameraVectors();
+    glm::vec3 prevPos;
 };
 #endif

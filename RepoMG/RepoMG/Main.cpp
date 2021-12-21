@@ -16,6 +16,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 unsigned int loadTexture(const char* path);
 unsigned int loadCubemap(std::vector<std::string> faces);
+glm::vec3 moveTrain(float &X, float &Y, float &Z);
 
 // settings
 const unsigned int SCR_WIDTH = 1920;
@@ -179,10 +180,15 @@ int main()
 	skyboxShader.use();
 	skyboxShader.setInt("skybox", 0);
 
+	float startX = -265.0f;
+	float startY = -17.0f;
+	float startZ = 190.0f;
+
 	float moveX = -10.0f;
 	float moveY = 0.0f;
 	float moveZ = 0.0f;
 	float degrees = 0.0f;
+
 	unsigned int key = 0;
 
 	// render loop
@@ -228,9 +234,9 @@ int main()
 		glm::mat4 _bvSign = glm::mat4(1.0f);
 		glm::mat4 _bucSign = glm::mat4(1.0f);
 
-		train = glm::translate(train, glm::vec3(3.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-		train = glm::scale(train, glm::vec3(4.0f, 4.0f, 4.0f));	// if it's a bit too big for our scene, scale it down
-		//train = glm::rotate(train, glm::radians(degrees), glm::vec3(0, 1, 0));
+		train = glm::translate(train, moveTrain(startX, startY, startZ)); // translate it down so it's at the center of the scene
+		train = glm::scale(train, glm::vec3(4.3f, 4.3f, 4.3f));	// if it's a bit too big for our scene, scale it down
+		train = glm::rotate(train, glm::radians(90.0f), glm::vec3(0, 1, 0));
 		trainShader.setMat4("model", train);
 		driverWagon.Draw(trainShader);
 		//tom.Draw(trainShader);
@@ -240,7 +246,7 @@ int main()
 		terrainShader.setMat4("model", _terrain);
 		terrain.Draw(terrainShader);
 
-		_station = glm::translate(_station, glm::vec3(-310.0f, -17.0f, 180.0f));
+		_station = glm::translate(_station, glm::vec3(-320.0f, -17.0f, 180.0f));
 		_station = glm::scale(_station, glm::vec3(0.03f, 0.03f, 0.03f));
 		_station = glm::rotate(_station, glm::radians(90.0f), glm::vec3(0, 1, 0));
 		stationShader.setMat4("model", _station);
@@ -252,20 +258,21 @@ int main()
 		ndStationShader.setMat4("model", _ndStation);
 		secondStation.Draw(ndStationShader);
 
-		_bvSign = glm::translate(_bvSign, glm::vec3(-281.0f, 55.0f, 180.0f));
-		_bvSign = glm::scale(_bvSign, glm::vec3(7.0f, 7.0f, 7.0f));
-		_bvSign = glm::rotate(_bvSign, glm::radians(90.0f), glm::vec3(0, 1, 0));
-		bvSignShader.setMat4("model", _bvSign);
+		_bucSign = glm::translate(_bucSign, glm::vec3(-291.0f, 55.0f, 180.0f));
+		_bucSign = glm::scale(_bucSign, glm::vec3(7.0f, 7.0f, 7.0f));
+		_bucSign = glm::rotate(_bucSign, glm::radians(90.0f), glm::vec3(0, 1, 0));
+		bvSignShader.setMat4("model", _bucSign);
 		bvSign.Draw(bvSignShader);
 
-		_bucSign = glm::translate(_bucSign, glm::vec3(-85.0f, 93.5f, -1831.0f));
-		//_bucSign = glm::translate(_bucSign, glm::vec3(-300.0f, 40.0f, 180.0f));
-		_bucSign = glm::scale(_bucSign, glm::vec3(7.0f, 7.0f, 7.0f));
-		_bucSign = glm::rotate(_bucSign, glm::radians(10.0f), glm::vec3(0, 1, 0));
-		bucSignShader.setMat4("model", _bucSign);
+		_bvSign = glm::translate(_bvSign, glm::vec3(-85.0f, 93.5f, -1831.0f));
+		//_bvSign = glm::translate(_bvSign, glm::vec3(-300.0f, 40.0f, 180.0f));
+		_bvSign = glm::scale(_bvSign, glm::vec3(7.0f, 7.0f, 7.0f));
+		_bvSign = glm::rotate(_bvSign, glm::radians(10.0f), glm::vec3(0, 1, 0));
+		bucSignShader.setMat4("model", _bvSign);
 		bucSign.Draw(bucSignShader);
 
-		
+		//camera.printPosition();
+
 		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) // driver camera
 			key = 1;
 		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) // passanger camera
@@ -328,6 +335,64 @@ int main()
 	return 0;
 }
 
+glm::vec3 moveTrain(float &X, float &Y, float &Z)
+{
+	if (X == -265 && Z > 114)
+	{
+		Z -= 0.1;
+	}
+	else if (X < -248 && Z > -40)
+	{
+		X += 0.02;
+		Z -= 0.1;
+		Y += 0.004;
+	}
+	else if (X < -214 && Z > -28)
+	{
+		X += 0.05;
+		Z -= 0.082;
+		Y += 0.002;
+	}
+	else if (X < -170 && Z > -82)
+	{
+		X += 0.06;
+		Z -= 0.09;
+		Y += 0.002;
+	}
+	else if (X < -111 && Z > -139)
+	{
+		X += 0.07;
+		Z -= 0.07;
+		Y += 0.002;
+	}
+	else if (X < -54 && Z > -174)
+	{
+		X += 0.07;
+		Z -= 0.055;
+		Y += 0.002;
+	}
+	else if (X < 159 && Z > -248)
+	{
+		X += 0.09;
+		Z -= 0.028;
+		Y += 0.003;
+	}
+	else if (X < 270 && Z > -353)
+	{
+		X += 0.07;
+		Z -= 0.07;
+		Y += 0.003;
+	}
+	else if (X < 303 && Z > -419)
+	{
+		X += 0.04;
+		Z -= 0.07;
+		Y += 0.004;
+	}
+
+	return glm::vec3(X, Y, Z);
+}
+
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
@@ -347,6 +412,8 @@ void processInput(GLFWwindow* window)
 		camera.ProcessKeyboard(UP, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
 		camera.ProcessKeyboard(DOWN, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+		camera.printPosition();
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes

@@ -57,6 +57,13 @@ void Camera::setViewMatrix(glm::vec3 pos)
 	Position = pos;
 }
 
+void Camera::printPosition()
+{
+	if (Position != prevPos)
+		std::cout << glm::to_string(Position) << "\n";
+	prevPos = Position;
+}
+
 void Camera::updateCameraVectors()
 {
 	// calculate the new Front vector
