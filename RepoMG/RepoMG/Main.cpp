@@ -1,5 +1,6 @@
 #include <filesystem>
 #include <vector>
+//#include <freeglut.h>
 
 #include "Camera.h"
 #include "Shader.h"
@@ -16,14 +17,14 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 unsigned int loadTexture(const char* path);
 unsigned int loadCubemap(std::vector<std::string> faces);
-glm::vec3 moveTrain(float &X, float &Y, float &Z);
+glm::vec3 moveTrain(float& X, float& Y, float& Z);
 
 // settings
 const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
+float speed = 1.0f;
 
 // camera
-
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = (float)SCR_WIDTH / 2.0;
 float lastY = (float)SCR_HEIGHT / 2.0;
@@ -35,6 +36,8 @@ float lastFrame = 0.0f;
 
 int main()
 {
+	std::cout << "<ENTER> Start the train movement\n<BACKSPACE> Stop the train movement\n<+> Increase train speed\n<-> Decrease train speed\n";
+
 	// glfw: initialize and configure
 	// ------------------------------
 	glfwInit();
@@ -74,7 +77,7 @@ int main()
 	// configure global opengl state
 	// -----------------------------
 	glEnable(GL_DEPTH_TEST);
-	
+
 	float skyboxVertices[] = {
 		// positions          
 		-1.0f,  1.0f, -1.0f,
@@ -122,7 +125,6 @@ int main()
 
 	// build and compile shaders
 	// -------------------------
-	//Shader shader("default.vs", "default.fs");
 	Shader skyboxShader("skybox.vs", "skybox.fs");
 	Shader trainShader("model.vs", "model.fs");
 	Shader terrainShader("model.vs", "model.fs");
@@ -172,11 +174,6 @@ int main()
 	};
 	unsigned int cubemapTexture = loadCubemap(faces);
 
-	// shader configuration
-	// --------------------
-	//shader.use();
-	//shader.setInt("texture1", 0);
-
 	skyboxShader.use();
 	skyboxShader.setInt("skybox", 0);
 
@@ -187,7 +184,11 @@ int main()
 	float moveX = -10.0f;
 	float moveY = 0.0f;
 	float moveZ = 0.0f;
-	float degrees = 0.0f;
+
+	float degreesY = 0.0f;
+	float degreesZ = 0.0f;
+
+	bool start = 0;
 
 	unsigned int key = 0;
 
@@ -195,8 +196,6 @@ int main()
 	// -----------
 	while (!glfwWindowShouldClose(window))
 	{
-		
-
 		// per-frame time logic
 		// --------------------
 		float currentFrame = glfwGetTime();
@@ -234,58 +233,71 @@ int main()
 		glm::mat4 _bvSign = glm::mat4(1.0f);
 		glm::mat4 _bucSign = glm::mat4(1.0f);
 
-		train = glm::translate(train, moveTrain(startX, startY, startZ)); // translate it down so it's at the center of the scene
-		train = glm::scale(train, glm::vec3(4.3f, 4.3f, 4.3f));	// if it's a bit too big for our scene, scale it down
-		train = glm::rotate(train, glm::radians(90.0f), glm::vec3(0, 1, 0));
+		// train
+		if (!start)
+			train = glm::translate(train, glm::vec3(startX, startY, startZ));
+		else
+			train = glm::translate(train, moveTrain(startX, startY, startZ /*, degreesY, degreesZ*/)); // rotation needs to be added in moveTrain by sending a reference float "degrees" for Y and Z, we dont need X rotation
+																								   // moveTrain function is declared at the top and body at the bottom (line 482)
+		train = glm::scale(train, glm::vec3(4.3f, 4.3f, 4.3f)); // make it a little bigger							   
+		train = glm::rotate(train, glm::radians(90.0f/* + degreesY*/), glm::vec3(0, 1, 0)); // train starts at 90 degrees rotation to face forward
+																						    // degreesY can be positive for left rotation and negative for right rotation
+		train = glm::rotate(train, glm::radians(0.0f/*or degreesZ*/), glm::vec3(0, 0, 1));  // degreesZ can be positive for up rotation and negative for down rotation
 		trainShader.setMat4("model", train);
 		driverWagon.Draw(trainShader);
 		//tom.Draw(trainShader);
-		
+
+		// terrain
 		_terrain = glm::translate(_terrain, glm::vec3(650.0f, -38.0f, -750.0f));
 		_terrain = glm::scale(_terrain, glm::vec3(2500.0f, 2500.0f, 2500.0f));
 		terrainShader.setMat4("model", _terrain);
 		terrain.Draw(terrainShader);
 
+		// start station
 		_station = glm::translate(_station, glm::vec3(-320.0f, -17.0f, 180.0f));
 		_station = glm::scale(_station, glm::vec3(0.03f, 0.03f, 0.03f));
 		_station = glm::rotate(_station, glm::radians(90.0f), glm::vec3(0, 1, 0));
 		stationShader.setMat4("model", _station);
 		station.Draw(stationShader);
 
+		// end station
 		_ndStation = glm::translate(_ndStation, glm::vec3(-90.0f, 22.0f, -1860.0f));
 		_ndStation = glm::scale(_ndStation, glm::vec3(0.03f, 0.03f, 0.03f));
 		_ndStation = glm::rotate(_ndStation, glm::radians(10.0f), glm::vec3(0, 1, 0));
 		ndStationShader.setMat4("model", _ndStation);
 		secondStation.Draw(ndStationShader);
 
+		// bucuresti sign
 		_bucSign = glm::translate(_bucSign, glm::vec3(-291.0f, 55.0f, 180.0f));
 		_bucSign = glm::scale(_bucSign, glm::vec3(7.0f, 7.0f, 7.0f));
 		_bucSign = glm::rotate(_bucSign, glm::radians(90.0f), glm::vec3(0, 1, 0));
 		bvSignShader.setMat4("model", _bucSign);
 		bvSign.Draw(bvSignShader);
 
+		// brasov sign
 		_bvSign = glm::translate(_bvSign, glm::vec3(-85.0f, 93.5f, -1831.0f));
-		//_bvSign = glm::translate(_bvSign, glm::vec3(-300.0f, 40.0f, 180.0f));
 		_bvSign = glm::scale(_bvSign, glm::vec3(7.0f, 7.0f, 7.0f));
 		_bvSign = glm::rotate(_bvSign, glm::radians(10.0f), glm::vec3(0, 1, 0));
 		bucSignShader.setMat4("model", _bvSign);
 		bucSign.Draw(bucSignShader);
 
-		//camera.printPosition();
-
 		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) // driver camera
 			key = 1;
-		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) // passanger camera
-			key = 2;
+		//if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) // passanger camera, idk if needed
+		//	key = 2;
 		if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) // 3rd person camera
 			key = 3;
 		if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS) // free camera
 			key = 4;
+		if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS) // start train
+			start = 1;
+		if (glfwGetKey(window, GLFW_KEY_BACKSPACE) == GLFW_PRESS) // stop train
+			start = 0;
 
 		switch (key)
 		{
 		case 1:
-			camera.setViewMatrix(glm::vec3(/*moveX +*/ 21.6f, 14.2f, 4.5f));
+			//camera.setViewMatrix(glm::vec3(idk, idk, idk));
 			break;
 		case 2:
 			//
@@ -301,7 +313,7 @@ int main()
 		}
 
 		// draw skybox as last
-	    glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
+		glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
 		skyboxShader.use();
 		view = glm::mat4(glm::mat3(camera.GetViewMatrix())); // remove translation from the view matrix
 		skyboxShader.setMat4("view", view);
@@ -318,79 +330,15 @@ int main()
 		// -------------------------------------------------------------------------------
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-
-		//moveX += 0.1f;
-		//moveY += 0.005f;
-		//degrees += 0.5f;
 	}
 
 	// optional: de-allocate all resources once they've outlived their purpose:
 	// ------------------------------------------------------------------------
-	//glDeleteVertexArrays(1, &cubeVAO);
 	glDeleteVertexArrays(1, &skyboxVAO);
-	//glDeleteBuffers(1, &cubeVBO);
 	glDeleteBuffers(1, &skyboxVBO);
 
 	glfwTerminate();
 	return 0;
-}
-
-glm::vec3 moveTrain(float &X, float &Y, float &Z)
-{
-	if (X == -265 && Z > 114)
-	{
-		Z -= 0.1;
-	}
-	else if (X < -248 && Z > -40)
-	{
-		X += 0.02;
-		Z -= 0.1;
-		Y += 0.004;
-	}
-	else if (X < -214 && Z > -28)
-	{
-		X += 0.05;
-		Z -= 0.082;
-		Y += 0.002;
-	}
-	else if (X < -170 && Z > -82)
-	{
-		X += 0.06;
-		Z -= 0.09;
-		Y += 0.002;
-	}
-	else if (X < -111 && Z > -139)
-	{
-		X += 0.07;
-		Z -= 0.07;
-		Y += 0.002;
-	}
-	else if (X < -54 && Z > -174)
-	{
-		X += 0.07;
-		Z -= 0.055;
-		Y += 0.002;
-	}
-	else if (X < 159 && Z > -248)
-	{
-		X += 0.09;
-		Z -= 0.028;
-		Y += 0.003;
-	}
-	else if (X < 270 && Z > -353)
-	{
-		X += 0.07;
-		Z -= 0.07;
-		Y += 0.003;
-	}
-	else if (X < 303 && Z > -419)
-	{
-		X += 0.04;
-		Z -= 0.07;
-		Y += 0.004;
-	}
-
-	return glm::vec3(X, Y, Z);
 }
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
@@ -414,6 +362,18 @@ void processInput(GLFWwindow* window)
 		camera.ProcessKeyboard(DOWN, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
 		camera.printPosition();
+	if (glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS)
+	{
+		if (speed <= 2.5)
+			speed += 0.5;
+		//std::cout << speed << "\n";
+	}
+	if (glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS)
+	{
+		if (speed > 1)
+			speed -= 0.5;
+		//std::cout << speed << "\n";
+	}
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
@@ -528,4 +488,174 @@ unsigned int loadCubemap(std::vector<std::string> faces)
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
 	return textureID;
+}
+
+glm::vec3 moveTrain(float& X, float& Y, float& Z)
+{
+	if (X == -265 && Z > 114)
+	{
+		Z -= 0.1 * speed;
+	}
+	else if (X < -248 && Z > -40)
+	{
+		X += 0.02 * speed;
+		Z -= 0.1 * speed;
+		Y += 0.004 * speed;
+	}
+	else if (X < -214 && Z > -28)
+	{
+		X += 0.05 * speed;
+		Z -= 0.082 * speed;
+		Y += 0.002 * speed;
+	}
+	else if (X < -170 && Z > -82)
+	{
+		X += 0.06 * speed;
+		Z -= 0.09 * speed;
+		Y += 0.002 * speed;
+	}
+	else if (X < -111 && Z > -139)
+	{
+		X += 0.07 * speed;
+		Z -= 0.07 * speed;
+		Y += 0.002 * speed;
+	}
+	else if (X < -54 && Z > -174)
+	{
+		X += 0.07 * speed;
+		Z -= 0.055 * speed;
+		Y += 0.002 * speed;
+	}
+	else if (X < 159 && Z > -248)
+	{
+		X += 0.09 * speed;
+		Z -= 0.028 * speed;
+		Y += 0.003 * speed;
+	}
+	else if (X < 270 && Z > -353)
+	{
+		X += 0.07 * speed;
+		Z -= 0.07 * speed;
+		Y += 0.003 * speed;
+	}
+	else if (X < 303 && Z > -419)
+	{
+		X += 0.04 * speed;
+		Z -= 0.07 * speed;
+		Y += 0.004 * speed;
+	}
+	else if (X < 329 && Z > -492)
+	{
+		X += 0.04 * speed;
+		Z -= 0.11 * speed;
+		Y += 0.006 * speed;
+	}
+	else if (X < 340 && Z > -566)
+	{
+		X += 0.02 * speed;
+		Z -= 0.09 * speed;
+		Y += 0.01 * speed;
+	}
+	else if (X < 349 && Z > -657)
+	{
+		X += 0.008 * speed;
+		Z -= 0.1 * speed;
+		Y += 0.012 * speed;
+	}
+	else if (X < 359 && Z > -766)
+	{
+		X += 0.014 * speed;
+		Z -= 0.13 * speed;
+		Y += 0.012 * speed;
+	}
+	else if (X < 365 && Z > -838)
+	{
+		X += 0.01 * speed;
+		Z -= 0.1 * speed;
+		Y += 0.006 * speed;
+	}
+	else if (X< 369 && Z > -901)
+	{
+		X += 0.006 * speed;
+		Z -= 0.1 * speed;
+		Y += 0.013 * speed;
+	}
+	else if (X < 371 && Z > -965)
+	{
+		X += 0.003 * speed;
+		Z -= 0.1 * speed;
+		Y += 0.017 * speed;
+	}
+	else if (X < 372 && Z > -1059)
+	{
+		Z -= 0.12 * speed;
+		Y += 0.016 * speed;
+	}
+	else if (X < 372 && Z > -1137)
+	{
+		Z -= 0.12 * speed;
+		Y += 0.025 * speed;
+	}
+	else if (X < 376 && Z > -1240)
+	{
+		X += 0.003 * speed;
+		Z -= 0.12 * speed;
+		Y -= 0.024 * speed;
+	}
+	else if (X < 404 && Z > -1435)
+	{
+		X += 0.02 * speed;
+		Z -= 0.13 * speed;
+		Y -= 0.03 * speed;
+	}
+	else if (X < 406 && Z > -1507)
+	{
+		X += 0.003 * speed;
+		Z -= 0.13 * speed;
+		Y -= 0.01 * speed;
+	}
+	else if (X > 390 && Z > -1582)
+	{
+		X -= 0.01 * speed;
+		Z -= 0.1 * speed;
+		Y -= 0.01 * speed;
+	}
+	else if (X > 351 && Z > -1648)
+	{
+		X -= 0.064 * speed;
+		Z -= 0.1 * speed;
+		Y -= 0.004 * speed;
+	}
+	else if (X > 294 && Z > -1705)
+	{
+		X -= 0.1 * speed;
+		Z -= 0.1 * speed;
+	}
+	else if (X > 240 && Z > -1735)
+	{
+		X -= 0.12 * speed;
+		Z -= 0.08 * speed;
+	}
+	else if (X > 167 && Z > -1761)
+	{
+		X -= 0.15 * speed;
+		Z -= 0.06 * speed;
+		Y -= 0.004 * speed;
+	}
+	else if (X > -128 && Z > -1763)
+	{
+		X -= 0.16 * speed;
+		Z -= 0.01 * speed;
+		//Y += 0.007;
+	}
+	else if (X > -138 && Z > -1766)
+	{
+		X -= 0.13 * speed;
+		Z -= 0.0013 * speed;
+		Y += 0.007 * speed;
+	}
+
+	//std::cout << Y << "\n";
+
+	return glm::vec3(X, Y, Z);
 }

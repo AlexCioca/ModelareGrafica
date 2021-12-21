@@ -1,10 +1,6 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <glad/glad.h> 
-
-#include <glm.hpp>
-#include <gtc/matrix_transform.hpp>
 #include <stb_image.h>
 
 #include <assimp/Importer.hpp>
@@ -15,16 +11,10 @@
 #include "Shader.h"
 
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <map>
 #include <vector>
 using namespace std;
 
 //unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false);
-
-
 
 class Model
 {
