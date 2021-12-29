@@ -17,7 +17,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 unsigned int loadTexture(const char* path);
 unsigned int loadCubemap(std::vector<std::string> faces);
-glm::vec3 moveTrain(float& X, float& Y, float& Z);
+glm::vec3 moveTrain(float& X, float& Y, float& Z, float& DegreesY, float& DegreesZ);
 
 // settings
 const unsigned int SCR_WIDTH = 1920;
@@ -48,6 +48,8 @@ int main()
 #ifdef __APPLE__
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
+
+	float rotY=0, rotZ=0;
 
 	// glfw window creation
 	// --------------------
@@ -233,16 +235,18 @@ int main()
 		glm::mat4 _bvSign = glm::mat4(1.0f);
 		glm::mat4 _bucSign = glm::mat4(1.0f);
 
+
+		
 		// train
 		if (!start)
 			train = glm::translate(train, glm::vec3(startX, startY, startZ));
 		else
-			train = glm::translate(train, moveTrain(startX, startY, startZ /*, degreesY, degreesZ*/)); // rotation needs to be added in moveTrain by sending a reference float "degrees" for Y and Z, we dont need X rotation
+			train = glm::translate(train, moveTrain(startX, startY, startZ,rotY,rotZ)); // rotation needs to be added in moveTrain by sending a reference float "degrees" for Y and Z, we dont need X rotation
 																								   // moveTrain function is declared at the top and body at the bottom (line 482)
 		train = glm::scale(train, glm::vec3(4.3f, 4.3f, 4.3f)); // make it a little bigger							   
-		train = glm::rotate(train, glm::radians(90.0f/* + degreesY*/), glm::vec3(0, 1, 0)); // train starts at 90 degrees rotation to face forward
+		train = glm::rotate(train, glm::radians(90.0f+rotY), glm::vec3(0, 1, 0)); // train starts at 90 degrees rotation to face forward
 																						    // degreesY can be positive for left rotation and negative for right rotation
-		train = glm::rotate(train, glm::radians(0.0f/*or degreesZ*/), glm::vec3(0, 0, 1));  // degreesZ can be positive for up rotation and negative for down rotation
+		train = glm::rotate(train, glm::radians(0.0f+rotZ), glm::vec3(0, 0, 1));  // degreesZ can be positive for up rotation and negative for down rotation
 		trainShader.setMat4("model", train);
 		driverWagon.Draw(trainShader);
 		//tom.Draw(trainShader);
@@ -490,92 +494,125 @@ unsigned int loadCubemap(std::vector<std::string> faces)
 	return textureID;
 }
 
-glm::vec3 moveTrain(float& X, float& Y, float& Z)
+glm::vec3 moveTrain(float& X, float& Y, float& Z, float& DegreesY, float& DegreesZ)
 {
+	
 	if (X == -265 && Z > 114)
 	{
 		Z -= 0.1 * speed;
 	}
 	else if (X < -248 && Z > -40)
 	{
+		
+		if (DegreesY > -12.5)
+			DegreesY-=0.2;
 		X += 0.02 * speed;
 		Z -= 0.1 * speed;
 		Y += 0.004 * speed;
+		
 	}
 	else if (X < -214 && Z > -28)
 	{
+		if (DegreesY > -27)
+			DegreesY -= 0.2;
 		X += 0.05 * speed;
 		Z -= 0.082 * speed;
 		Y += 0.002 * speed;
 	}
 	else if (X < -170 && Z > -82)
 	{
+		if (DegreesY > -40)
+			DegreesY -= 0.3;
 		X += 0.06 * speed;
 		Z -= 0.09 * speed;
 		Y += 0.002 * speed;
 	}
 	else if (X < -111 && Z > -139)
 	{
+		if (DegreesY > -52)
+			DegreesY -= 0.3;
 		X += 0.07 * speed;
 		Z -= 0.07 * speed;
 		Y += 0.002 * speed;
 	}
 	else if (X < -54 && Z > -174)
 	{
-		X += 0.07 * speed;
+		if (DegreesY > -60)
+			DegreesY -= 0.3;
+
+		
+		X += 0.09 * speed; 
 		Z -= 0.055 * speed;
 		Y += 0.002 * speed;
+
 	}
 	else if (X < 159 && Z > -248)
 	{
+	
+		if (DegreesY > -73)
+			DegreesY -= 0.3;
 		X += 0.09 * speed;
 		Z -= 0.028 * speed;
 		Y += 0.003 * speed;
 	}
 	else if (X < 270 && Z > -353)
 	{
+		if (DegreesY < -50)
+			DegreesY += 0.3;
 		X += 0.07 * speed;
 		Z -= 0.07 * speed;
 		Y += 0.003 * speed;
 	}
 	else if (X < 303 && Z > -419)
 	{
+		if (DegreesY < -25)
+			DegreesY += 0.3;
 		X += 0.04 * speed;
 		Z -= 0.07 * speed;
 		Y += 0.004 * speed;
 	}
 	else if (X < 329 && Z > -492)
 	{
+		if (DegreesY < -17)
+			DegreesY += 0.3;
 		X += 0.04 * speed;
 		Z -= 0.11 * speed;
 		Y += 0.006 * speed;
 	}
 	else if (X < 340 && Z > -566)
 	{
+		if (DegreesY < 0)
+			DegreesY += 0.3;
+		if (DegreesZ < 5)
+			DegreesZ += 0.3;
 		X += 0.02 * speed;
 		Z -= 0.09 * speed;
 		Y += 0.01 * speed;
 	}
 	else if (X < 349 && Z > -657)
 	{
+	
 		X += 0.008 * speed;
 		Z -= 0.1 * speed;
 		Y += 0.012 * speed;
 	}
 	else if (X < 359 && Z > -766)
 	{
+	
 		X += 0.014 * speed;
 		Z -= 0.13 * speed;
 		Y += 0.012 * speed;
 	}
 	else if (X < 365 && Z > -838)
 	{
+
 		X += 0.01 * speed;
 		Z -= 0.1 * speed;
 		Y += 0.006 * speed;
 	}
 	else if (X< 369 && Z > -901)
 	{
+	
 		X += 0.006 * speed;
 		Z -= 0.1 * speed;
 		Y += 0.013 * speed;
@@ -598,10 +635,13 @@ glm::vec3 moveTrain(float& X, float& Y, float& Z)
 	}
 	else if (X < 376 && Z > -1240)
 	{
+
+	if (DegreesZ > -10)
+		DegreesZ -= 0.3;
 		X += 0.003 * speed;
 		Z -= 0.12 * speed;
 		Y -= 0.024 * speed;
-	}
+	}///de aici cioc
 	else if (X < 404 && Z > -1435)
 	{
 		X += 0.02 * speed;
@@ -654,8 +694,8 @@ glm::vec3 moveTrain(float& X, float& Y, float& Z)
 		Z -= 0.0013 * speed;
 		Y += 0.007 * speed;
 	}
-
-	//std::cout << Y << "\n";
+	//std::cout << X << '\n';
+//	std::cout << Y << "\n";
 
 	return glm::vec3(X, Y, Z);
 }
