@@ -1,100 +1,108 @@
 ﻿  Main.cpp
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(203,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(398,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(399,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(403,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(404,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(406,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(407,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(416,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(502,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(508,17): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(509,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(510,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(511,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(517,19): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(518,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(519,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(520,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(525,19): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(526,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(527,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(528,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(533,19): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(534,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(535,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(536,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(541,19): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(544,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(545,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(546,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(553,21): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(556,19): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(557,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(558,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(559,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(564,19): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(565,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(566,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(567,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(572,19): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(573,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(574,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(575,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(580,19): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(581,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(582,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(583,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(588,19): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(590,19): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(591,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(592,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(593,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(598,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(599,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(600,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(605,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(606,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(607,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(612,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(613,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(614,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(619,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(620,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(621,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(625,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(626,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(627,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(631,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(632,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(636,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(637,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(643,18): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(644,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(645,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(646,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(650,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(651,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(652,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(656,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(657,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(658,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(662,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(663,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(664,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(668,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(669,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(670,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(674,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(675,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(679,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(680,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(684,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(685,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(686,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(690,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(691,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(696,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(697,22): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\MG\RepoMG\RepoMG\Main.cpp(698,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  RepoMG.vcxproj -> D:\Facultate\MG\RepoMG\Debug\RepoMG.exe
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(203,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(396,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(397,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(401,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(402,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(404,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(405,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(414,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(500,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(506,17): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(507,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(508,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(509,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(515,19): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(516,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(517,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(518,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(523,19): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(524,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(525,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(526,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(531,19): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(532,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(533,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(534,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(539,19): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(542,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(543,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(544,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(551,19): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(552,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(553,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(554,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(559,19): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(560,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(561,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(562,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(567,19): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(568,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(569,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(570,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(575,19): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(576,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(577,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(578,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(583,19): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(585,19): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(586,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(587,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(588,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(593,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(594,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(595,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(600,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(601,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(602,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(607,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(608,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(609,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(614,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(615,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(616,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(620,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(621,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(622,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(626,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(627,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(631,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(632,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(638,18): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(639,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(640,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(641,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(645,20): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(646,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(647,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(651,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(652,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(653,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(657,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(658,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(659,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(663,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(664,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(665,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(669,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(670,19): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(674,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(675,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(679,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(680,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(681,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(685,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(686,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(691,20): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(692,22): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Main.cpp(693,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  Camera.cpp
+  Mesh.cpp
+  Model.cpp
+  Shader.cpp
+D:\Faculta\MG\TREN\RepoMG\RepoMG\Shader.cpp(41,33): warning C4101: 'e': unreferenced local variable
+  Generating Code...
+  glad.c
+  LINK : D:\Faculta\MG\TREN\RepoMG\Debug\RepoMG.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  RepoMG.vcxproj -> D:\Faculta\MG\TREN\RepoMG\Debug\RepoMG.exe

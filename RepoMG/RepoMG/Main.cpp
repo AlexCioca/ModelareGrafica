@@ -53,7 +53,7 @@ int main()
 
 	// glfw window creation
 	// --------------------
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Brasov to Bucharest", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Bucharest to Brasov", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -234,9 +234,7 @@ int main()
 		glm::mat4 _ndStation = glm::mat4(1.0f);
 		glm::mat4 _bvSign = glm::mat4(1.0f);
 		glm::mat4 _bucSign = glm::mat4(1.0f);
-
-
-		
+				
 		// train
 		if (!start)
 			train = glm::translate(train, glm::vec3(startX, startY, startZ));
@@ -275,15 +273,15 @@ int main()
 		_bucSign = glm::translate(_bucSign, glm::vec3(-291.0f, 55.0f, 180.0f));
 		_bucSign = glm::scale(_bucSign, glm::vec3(7.0f, 7.0f, 7.0f));
 		_bucSign = glm::rotate(_bucSign, glm::radians(90.0f), glm::vec3(0, 1, 0));
-		bvSignShader.setMat4("model", _bucSign);
-		bvSign.Draw(bvSignShader);
+		bucSignShader.setMat4("model", _bucSign);
+		bucSign.Draw(bvSignShader);
 
 		// brasov sign
 		_bvSign = glm::translate(_bvSign, glm::vec3(-85.0f, 93.5f, -1831.0f));
 		_bvSign = glm::scale(_bvSign, glm::vec3(7.0f, 7.0f, 7.0f));
 		_bvSign = glm::rotate(_bvSign, glm::radians(10.0f), glm::vec3(0, 1, 0));
-		bucSignShader.setMat4("model", _bvSign);
-		bucSign.Draw(bucSignShader);
+		bvSignShader.setMat4("model", _bvSign);
+		bvSign.Draw(bucSignShader);
 
 		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) // driver camera
 			key = 1;
