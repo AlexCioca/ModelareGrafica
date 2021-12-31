@@ -36,7 +36,7 @@ float lastFrame = 0.0f;
 
 int main()
 {
-	std::cout << "<ENTER> Start the train movement\n<BACKSPACE> Stop the train movement\n<+> Increase train speed\n<-> Decrease train speed\n";
+	std::cout << "<ENTER> Start the train movement\n<BACKSPACE> Stop the train movement\n<1> Driver Camera\n<2> Outside Camera\n<3> Free Camera\n<+> Increase train speed\n<-> Decrease train speed\n";
 
 	// glfw: initialize and configure
 	// ------------------------------
@@ -248,7 +248,7 @@ int main()
 
 		train = glm::scale(train, glm::vec3(4.3f, 4.3f, 4.3f)); // make it a little bigger							   
 		train = glm::rotate(train, glm::radians(90.0f + rotY), glm::vec3(0, 1, 0)); // train starts at 90 degrees rotation to face forward
-		train = glm::rotate(train, glm::radians(0.0f + rotZ), glm::vec3(0, 0, 1));  
+		train = glm::rotate(train, glm::radians(0.0f + rotZ), glm::vec3(0, 0, 1));
 		trainShader.setMat4("model", train);
 		driverWagon.Draw(trainShader);
 
@@ -295,8 +295,10 @@ int main()
 
 		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) // driver camera
 			key = 1;
-		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) // free camera
+		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) // 3rd person camera
 			key = 2;
+		if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) // free camera
+			key = 3;
 		if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS) // start train
 			start = 1;
 		if (glfwGetKey(window, GLFW_KEY_BACKSPACE) == GLFW_PRESS) // stop train
@@ -306,11 +308,12 @@ int main()
 		{
 		case 1:
 			if (!start)
-				camera.setViewMatrix(glm::vec3(-260.0f, -1.0f, 167.0f));
+				camera.setViewMatrix(glm::vec3(-260.0f, -2.0f, 167.0f));
 			else
 				key = 2;
 			break;
 		case 2:
+			camera.setViewMatrix(glm::vec3(startX - 15, startY + 50, startZ + 100));
 			break;
 		default:
 			break;
@@ -374,7 +377,7 @@ void processInput(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS)
 	{
-		if (speed > 1)
+		if (speed > 1.5)
 			speed -= 0.5;
 		//std::cout << speed << "\n";
 	}
@@ -724,8 +727,6 @@ glm::vec3 moveTrain(float& X, float& Y, float& Z, float& DegreesY, float& Degree
 		Z -= 0.0013 * speed;
 		Y += 0.007 * speed;
 	}
-	//std::cout << X << '\n';
-//	std::cout << Y << "\n";
 
 	return glm::vec3(X, Y, Z);
 }
