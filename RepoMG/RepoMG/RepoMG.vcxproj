@@ -171,8 +171,16 @@
   <ItemGroup>
     <None Include="default.fs" />
     <None Include="default.vs" />
+    <None Include="Lamp.fs" />
+    <None Include="Lamp.vs" />
     <None Include="model.fs" />
     <None Include="model.vs" />
+    <None Include="PhongLight.fs" />
+    <None Include="PhongLight.vs" />
+    <None Include="ShadowMapping.fs" />
+    <None Include="ShadowMapping.vs" />
+    <None Include="ShadowMappingDepth.fs" />
+    <None Include="ShadowMappingDepth.vs" />
     <None Include="skybox.fs" />
     <None Include="skybox.vs" />
   </ItemGroup>
